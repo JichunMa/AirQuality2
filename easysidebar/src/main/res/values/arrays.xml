@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string-array name="provinces">
+        <item>北京</item>
+        <item>上海</item>
+        <item>天津</item>
+        <item>重庆</item>
+        <item>阿克苏</item>
+        <item>安宁</item>
+        <item>安庆</item>
+        <item>鞍山</item>
+        <item>安顺</item>
+        <item>安阳</item>
+        <item>白城</item>
+        <item>白山</item>
+        <item>白银</item>
+        <item>蚌埠</item>
+        <item>保定</item>
+        <item>宝鸡</item>
+        <item>保山</item>
+        <item>巴中</item>
+        <item>北海</item>
+        <item>本溪</item>
+        <item>滨州</item>
+        <item>博乐</item>
+        <item>亳州</item>
+        <item>沧州</item>
+        <item>常德</item>
+        <item>昌吉</item>
+        <item>常熟</item>
+        <item>常州</item>
+        <item>巢湖</item>
+        <item>朝阳</item>
+        <item>潮州</item>
+        <item>承德</item>
+        <item>成都</item>
+        <item>城固</item>
+        <item>郴州</item>
+        <item>赤壁</item>
+        <item>赤峰</item>
+        <item>赤水</item>
+        <item>池州</item>
+        <item>崇左</item>
+        <item>楚雄</item>
+        <item>滁州</item>
+        <item>慈溪</item>
+        <item>从化</item>
+        <item>大理</item>
+        <item>大连</item>
+        <item>丹东</item>
+        <item>丹阳</item>
+        <item>大庆</item>
+        <item>大同</item>
+        <item>达州</item>
+        <item>德阳</item>
+        <item>德州</item>
+        <item>东莞</item>
+        <item>东阳</item>
+        <item>东营</item>
+        <item>都匀</item>
+        <item>敦化</item>
+        <item>鄂尔多斯</item>
+        <item>恩施</item>
+        <item>防城港</item>
+        <item>肥城</item>
+        <item>奉化</item>
+        <item>抚顺</item>
+        <item>阜新</item>
+        <item>阜阳</item>
+        <item>富阳</item>
+        <item>福州</item>
+        <item>抚州</item>
+        <item>赣榆</item>
+        <item>赣州</item>
+        <item>高明</item>
+        <item>高邮</item>
+        <item>格尔木</item>
+        <item>个旧</item>
+        <item>巩义</item>
+        <item>广安</item>
+        <item>广元</item>
+        <item>广州</item>
+        <item>古包头</item>
+        <item>贵港</item>
+        <item>桂林</item>
+        <item>贵阳</item>
+        <item>固原</item>
+        <item>哈尔滨</item>
+        <item>海城</item>
+        <item>海口</item>
+        <item>海门</item>
+        <item>海宁</item>
+        <item>哈密</item>
+        <item>邯郸</item>
+        <item>杭州</item>
+        <item>汉中</item>
+        <item>鹤壁</item>
+        <item>合肥</item>
+        <item>衡水</item>
+        <item>衡阳</item>
+        <item>和田</item>
+        <item>河源</item>
+        <item>菏泽</item>
+        <item>花都</item>
+        <item>淮安</item>
+        <item>淮北</item>
+        <item>怀化</item>
+        <item>淮南</item>
+        <item>黄冈</item>
+        <item>黄山</item>
+        <item>黄石</item>
+        <item>呼和浩特</item>
+        <item>惠州</item>
+        <item>葫芦岛</item>
+        <item>湖州</item>
+        <item>佳木斯</item>
+        <item>吉安</item>
+        <item>江都</item>
+        <item>江门</item>
+        <item>江阴</item>
+        <item>胶南</item>
+        <item>胶州</item>
+        <item>焦作</item>
+        <item>嘉善</item>
+        <item>嘉兴</item>
+        <item>介休</item>
+        <item>吉林</item>
+        <item>即墨</item>
+        <item>济南</item>
+        <item>晋城</item>
+        <item>景德镇</item>
+        <item>景洪</item>
+        <item>靖江</item>
+        <item>荆门</item>
+        <item>荆州</item>
+        <item>金华</item>
+        <item>集宁</item>
+        <item>济宁</item>
+        <item>晋江</item>
+        <item>金坛</item>
+        <item>晋中</item>
+        <item>锦州</item>
+        <item>吉首</item>
+        <item>九江</item>
+        <item>酒泉</item>
+        <item>鸡西</item>
+        <item>济源</item>
+        <item>句容</item>
+        <item>开封</item>
+        <item>凯里</item>
+        <item>开平</item>
+        <item>开远</item>
+        <item>喀什</item>
+        <item>克拉玛依</item>
+        <item>库尔勒</item>
+        <item>奎屯</item>
+        <item>昆明</item>
+        <item>昆山</item>
+        <item>来宾</item>
+        <item>莱芜</item>
+        <item>莱西</item>
+        <item>莱州</item>
+        <item>廊坊</item>
+        <item>兰州</item>
+        <item>拉萨</item>
+        <item>乐山</item>
+        <item>连云港</item>
+        <item>聊城</item>
+        <item>辽阳</item>
+        <item>辽源</item>
+        <item>丽江</item>
+        <item>临安</item>
+        <item>临沧</item>
+        <item>临汾</item>
+        <item>灵宝</item>
+        <item>临河</item>
+        <item>临夏</item>
+        <item>临沂</item>
+        <item>丽水</item>
+        <item>六安</item>
+        <item>六盘水</item>
+        <item>柳州</item>
+        <item>溧阳</item>
+        <item>龙海</item>
+        <item>龙岩</item>
+        <item>娄底</item>
+        <item>漯河</item>
+        <item>洛阳</item>
+        <item>潞西</item>
+        <item>泸州</item>
+        <item>吕梁</item>
+        <item>旅顺</item>
+        <item>马鞍山</item>
+        <item>茂名</item>
+        <item>梅河口</item>
+        <item>眉山</item>
+        <item>梅州</item>
+        <item>勉县</item>
+        <item>绵阳</item>
+        <item>牡丹江</item>
+        <item>南安</item>
+        <item>南昌</item>
+        <item>南充</item>
+        <item>南京</item>
+        <item>南宁</item>
+        <item>南平</item>
+        <item>南通</item>
+        <item>南阳</item>
+        <item>内江</item>
+        <item>宁波</item>
+        <item>宁德</item>
+        <item>盘锦</item>
+        <item>攀枝花</item>
+        <item>蓬莱</item>
+        <item>平顶山</item>
+        <item>平度</item>
+        <item>平湖</item>
+        <item>平凉</item>
+        <item>萍乡</item>
+        <item>普兰店</item>
+        <item>普宁</item>
+        <item>莆田</item>
+        <item>濮阳</item>
+        <item>黔南</item>
+        <item>启东</item>
+        <item>青岛</item>
+        <item>庆阳</item>
+        <item>清远</item>
+        <item>青州</item>
+        <item>秦皇岛</item>
+        <item>钦州</item>
+        <item>琼海</item>
+        <item>齐齐哈尔</item>
+        <item>泉州</item>
+        <item>曲靖</item>
+        <item>衢州</item>
+        <item>日喀则</item>
+        <item>日照</item>
+        <item>荣成</item>
+        <item>如皋</item>
+        <item>瑞安</item>
+        <item>乳山</item>
+        <item>三门峡</item>
+        <item>三明</item>
+        <item>三亚</item>
+        <item>厦门</item>
+        <item>佛山</item>
+        <item>商洛</item>
+        <item>商丘</item>
+        <item>上饶</item>
+        <item>上虞</item>
+        <item>汕头</item>
+        <item>安康</item>
+        <item>韶关</item>
+        <item>绍兴</item>
+        <item>邵阳</item>
+        <item>沈阳</item>
+        <item>深圳</item>
+        <item>石河子</item>
+        <item>石家庄</item>
+        <item>石林</item>
+        <item>石狮</item>
+        <item>十堰</item>
+        <item>寿光</item>
+        <item>双鸭山</item>
+        <item>朔州</item>
+        <item>沭阳</item>
+        <item>思茅</item>
+        <item>四平</item>
+        <item>松原</item>
+        <item>遂宁</item>
+        <item>随州</item>
+        <item>苏州</item>
+        <item>塔城</item>
+        <item>泰安</item>
+        <item>太仓</item>
+        <item>泰兴</item>
+        <item>太原</item>
+        <item>泰州</item>
+        <item>台州</item>
+        <item>唐山</item>
+        <item>腾冲</item>
+        <item>滕州</item>
+        <item>天门</item>
+        <item>天水</item>
+        <item>铁岭</item>
+        <item>铜川</item>
+        <item>通辽</item>
+        <item>铜陵</item>
+        <item>桐庐</item>
+        <item>铜仁</item>
+        <item>桐乡</item>
+        <item>通州</item>
+        <item>通化</item>
+        <item>吐鲁番</item>
+        <item>瓦房店</item>
+        <item>潍坊</item>
+        <item>威海</item>
+        <item>渭南</item>
+        <item>文登</item>
+        <item>温岭</item>
+        <item>温州</item>
+        <item>乌海</item>
+        <item>武汉</item>
+        <item>芜湖</item>
+        <item>吴江</item>
+        <item>乌兰浩特</item>
+        <item>武威</item>
+        <item>无锡</item>
+        <item>梧州</item>
+        <item>西安</item>
+        <item>项城</item>
+        <item>襄樊</item>
+        <item>香格里拉</item>
+        <item>象山</item>
+        <item>湘潭</item>
+        <item>湘乡</item>
+        <item>咸宁</item>
+        <item>仙桃</item>
+        <item>咸阳</item>
+        <item>西藏</item>
+        <item>西昌</item>
+        <item>邢台</item>
+        <item>兴义</item>
+        <item>西宁</item>
+        <item>新乡</item>
+        <item>信阳</item>
+        <item>新余</item>
+        <item>忻州</item>
+        <item>宿迁</item>
+        <item>宿豫</item>
+        <item>宿州</item>
+        <item>宣城</item>
+        <item>许昌</item>
+        <item>徐州</item>
+        <item>雅安</item>
+        <item>牙克石</item>
+        <item>延安</item>
+        <item>延边</item>
+        <item>盐城</item>
+        <item>阳江</item>
+        <item>阳泉</item>
+        <item>扬州</item>
+        <item>延吉</item>
+        <item>烟台</item>
+        <item>兖州</item>
+        <item>宜宾</item>
+        <item>宜昌</item>
+        <item>宜春</item>
+        <item>伊春</item>
+        <item>伊犁</item>
+        <item>银川</item>
+        <item>营口</item>
+        <item>鹰潭</item>
+        <item>伊宁</item>
+        <item>义乌</item>
+        <item>宜兴</item>
+        <item>益阳</item>
+        <item>永康</item>
+        <item>永州</item>
+        <item>岳阳</item>
+        <item>玉环</item>
+        <item>榆林</item>
+        <item>玉林</item>
+        <item>运城</item>
+        <item>玉溪</item>
+        <item>余姚</item>
+        <item>枣庄</item>
+        <item>增城</item>
+        <item>长春</item>
+        <item>长海</item>
+        <item>张家港</item>
+        <item>张家界</item>
+        <item>张家口</item>
+        <item>长乐</item>
+        <item>章丘</item>
+        <item>长沙</item>
+        <item>张掖</item>
+        <item>长治</item>
+        <item>漳州</item>
+        <item>湛江</item>
+        <item>肇东</item>
+        <item>肇庆</item>
+        <item>昭通</item>
+        <item>郑州</item>
+        <item>镇江</item>
+        <item>中山</item>
+        <item>周口</item>
+        <item>舟山</item>
+        <item>诸城</item>
+        <item>珠海</item>
+        <item>诸暨</item>
+        <item>驻马店</item>
+        <item>株洲</item>
+        <item>淄博</item>
+        <item>自贡</item>
+        <item>遵义</item>
+        <item>乌鲁木齐</item>
+        <item>福清</item>
+        <item>鄂州</item>
+        <item>包头</item>
+        <item>萧山</item>
+        <item>宣化</item>
+        <item>江油</item>
+        <item>资阳</item>
+        <item>辛集</item>
+        <item>佛山</item>
+        <item>万州</item>
+        <item>邹城</item>
+        <item>邵武</item>
+        <item>姜堰</item>
+        <item>湘阴</item>
+        <item>松江</item>
+        <item>七台河</item>
+        <item>醴陵</item>
+        <item>涪陵</item>
+        <item>公主岭</item>
+        <item>歙县</item>
+        <item>兴化</item>
+    </string-array>
+
+
+    <string-array name="provinces_py">
+
+        <item> BEIJING </item>
+        <item> SHANGHAI </item>
+        <item> TIANJIN </item>
+        <item> CHONGQING </item>
+        <item> AKESU </item>
+        <item> ANNING </item>
+        <item> ANQING </item>
+        <item> ANSHAN </item>
+        <item> ANSHUN </item>
+        <item> ANYANG </item>
+        <item> BAICHENG </item>
+        <item> BAISHAN </item>
+        <item> BAIYIN </item>
+        <item> BENGBU </item>
+        <item> BAODING </item>
+        <item> BAOJI </item>
+        <item> BAOSHAN </item>
+        <item> BAZHONG </item>
+        <item> BEIHAI </item>
+        <item> BENXI </item>
+        <item> BINZHOU </item>
+        <item> BOLE </item>
+        <item> BOZHOU </item>
+        <item> CANGZHOU </item>
+        <item> CHANGDE </item>
+        <item> CHANGJI </item>
+        <item> CHANGSHU </item>
+        <item> CHANGZHOU </item>
+        <item> CHAOHU </item>
+        <item> CHAOYANG </item>
+        <item> CHAOZHOU </item>
+        <item> CHENGDE </item>
+        <item> CHENGDU </item>
+        <item> CHENGGU </item>
+        <item> CHENZHOU </item>
+        <item> CHIBI </item>
+        <item> CHIFENG </item>
+        <item> CHISHUI </item>
+        <item> CHIZHOU </item>
+        <item> CHONGZUO </item>
+        <item> CHUXIONG </item>
+        <item> CHUZHOU </item>
+        <item> CIXI </item>
+        <item> CONGHUA </item>
+        <item> DALI </item>
+        <item> DALIAN </item>
+        <item> DANDONG </item>
+        <item> DANYANG </item>
+        <item> DAQING </item>
+        <item> DATONG </item>
+        <item> DAZHOU </item>
+        <item> DEYANG </item>
+        <item> DEZHOU </item>
+        <item> DONGGUAN </item>
+        <item> DONGYANG </item>
+        <item> DONGYING </item>
+        <item> DOUYUN </item>
+        <item> DUNHUA </item>
+        <item> EERDUOSI </item>
+        <item> ENSHI </item>
+        <item> FANGCHENGGANG </item>
+        <item> FEICHENG </item>
+        <item> FENGHUA </item>
+        <item> FUSHUN </item>
+        <item> FUXIN </item>
+        <item> FUYANG </item>
+        <item> FUYANG1 </item>
+        <item> FUZHOU </item>
+        <item> FUZHOU1 </item>
+        <item> GANYU </item>
+        <item> GANZHOU </item>
+        <item> GAOMING </item>
+        <item> GAOYOU </item>
+        <item> GEERMU </item>
+        <item> GEJIU </item>
+        <item> GONGYI </item>
+        <item> GUANGAN </item>
+        <item> GUANGYUAN </item>
+        <item> GUANGZHOU </item>
+        <item> GUBAOTOU </item>
+        <item> GUIGANG </item>
+        <item> GUILIN </item>
+        <item> GUIYANG </item>
+        <item> GUYUAN </item>
+        <item> HAERBIN </item>
+        <item> HAICHENG </item>
+        <item> HAIKOU </item>
+        <item> HAIMEN </item>
+        <item> HAINING </item>
+        <item> HAMI </item>
+        <item> HANDAN </item>
+        <item> HANGZHOU </item>
+        <item> HANZHONG </item>
+        <item> HEBI </item>
+        <item> HEFEI </item>
+        <item> HENGSHUI </item>
+        <item> HENGYANG </item>
+        <item> HETIAN </item>
+        <item> HEYUAN </item>
+        <item> HEZE </item>
+        <item> HUADOU </item>
+        <item> HUAIAN </item>
+        <item> HUAIBEI </item>
+        <item> HUAIHUA </item>
+        <item> HUAINAN </item>
+        <item> HUANGGANG </item>
+        <item> HUANGSHAN </item>
+        <item> HUANGSHI </item>
+        <item> HUHEHAOTE </item>
+        <item> HUIZHOU </item>
+        <item> HULUDAO </item>
+        <item> HUZHOU </item>
+        <item> JIAMUSI </item>
+        <item> JIAN </item>
+        <item> JIANGDOU </item>
+        <item> JIANGMEN </item>
+        <item> JIANGYIN </item>
+        <item> JIAONAN </item>
+        <item> JIAOZHOU </item>
+        <item> JIAOZUO </item>
+        <item> JIASHAN </item>
+        <item> JIAXING </item>
+        <item> JIEXIU </item>
+        <item> JILIN </item>
+        <item> JIMO </item>
+        <item> JINAN </item>
+        <item> JINCHENG </item>
+        <item> JINGDEZHEN </item>
+        <item> JINGHONG </item>
+        <item> JINGJIANG </item>
+        <item> JINGMEN </item>
+        <item> JINGZHOU </item>
+        <item> JINHUA </item>
+        <item> JINING1 </item>
+        <item> JINING </item>
+        <item> JINJIANG </item>
+        <item> JINTAN </item>
+        <item> JINZHONG </item>
+        <item> JINZHOU </item>
+        <item> JISHOU </item>
+        <item> JIUJIANG </item>
+        <item> JIUQUAN </item>
+        <item> JIXI </item>
+        <item> JIYUAN </item>
+        <item> JURONG </item>
+        <item> KAIFENG </item>
+        <item> KAILI </item>
+        <item> KAIPING </item>
+        <item> KAIYUAN </item>
+        <item> KASHEN </item>
+        <item> KELAMAYI </item>
+        <item> KUERLE </item>
+        <item> KUITUN </item>
+        <item> KUNMING </item>
+        <item> KUNSHAN </item>
+        <item> LAIBIN </item>
+        <item> LAIWU </item>
+        <item> LAIXI </item>
+        <item> LAIZHOU </item>
+        <item> LANGFANG </item>
+        <item> LANZHOU </item>
+        <item> LASA </item>
+        <item> LESHAN </item>
+        <item> LIANYUNGANG </item>
+        <item> LIAOCHENG </item>
+        <item> LIAOYANG </item>
+        <item> LIAOYUAN </item>
+        <item> LIJIANG </item>
+        <item> LINAN </item>
+        <item> LINCANG </item>
+        <item> LINFEN </item>
+        <item> LINGBAO </item>
+        <item> LINHE </item>
+        <item> LINXIA </item>
+        <item> LINYI </item>
+        <item> LISHUI </item>
+        <item> LIUAN </item>
+        <item> LIUPANSHUI </item>
+        <item> LIUZHOU </item>
+        <item> LIYANG </item>
+        <item> LONGHAI </item>
+        <item> LONGYAN </item>
+        <item> LOUDI </item>
+        <item> LUOHE </item>
+        <item> LUOYANG </item>
+        <item> LUXI </item>
+        <item> LUZHOU </item>
+        <item> LVLIANG </item>
+        <item> LVSHUN </item>
+        <item> MAANSHAN </item>
+        <item> MAOMING </item>
+        <item> MEIHEKOU </item>
+        <item> MEISHAN </item>
+        <item> MEIZHOU </item>
+        <item> MIANXIAN </item>
+        <item> MIANYANG </item>
+        <item> MUDANJIANG </item>
+        <item> NANAN </item>
+        <item> NANCHANG </item>
+        <item> NANCHONG </item>
+        <item> NANJING </item>
+        <item> NANNING </item>
+        <item> NANPING </item>
+        <item> NANTONG </item>
+        <item> NANYANG </item>
+        <item> NEIJIANG </item>
+        <item> NINGBO </item>
+        <item> NINGDE </item>
+        <item> PANJIN </item>
+        <item> PANZHIHUA </item>
+        <item> PENGLAI </item>
+        <item> PINGDINGSHAN </item>
+        <item> PINGDU </item>
+        <item> PINGHU </item>
+        <item> PINGLIANG </item>
+        <item> PINGXIANG </item>
+        <item> PULANDIAN </item>
+        <item> PUNING </item>
+        <item> PUTIAN </item>
+        <item> PUYANG </item>
+        <item> QIANNAN </item>
+        <item> QIDONG </item>
+        <item> QINGDAO </item>
+        <item> QINGYANG </item>
+        <item> QINGYUAN </item>
+        <item> QINGZHOU </item>
+        <item> QINHUANGDAO </item>
+        <item> QINZHOU </item>
+        <item> QIONGHAI </item>
+        <item> QIQIHAER </item>
+        <item> QUANZHOU </item>
+        <item> QUJING </item>
+        <item> QUZHOU </item>
+        <item> RIKAZE </item>
+        <item> RIZHAO </item>
+        <item> RONGCHENG </item>
+        <item> RUGAO </item>
+        <item> RUIAN </item>
+        <item> RUSHAN </item>
+        <item> SANMENXIA </item>
+        <item> SANMING </item>
+        <item> SANYA </item>
+        <item> XIAMEN </item>
+        <item> SHAN </item>
+        <item> SHANGLUO </item>
+        <item> SHANGQIU </item>
+        <item> SHANGRAO </item>
+        <item> SHANGYU </item>
+        <item> SHANTOU </item>
+        <item> ANKANG </item>
+        <item> SHAOGUAN </item>
+        <item> SHAOXING </item>
+        <item> SHAOYANG </item>
+        <item> SHENYANG </item>
+        <item> SHENZHEN </item>
+        <item> SHIHEZI </item>
+        <item> SHIJIAZHUANG </item>
+        <item> SHILIN </item>
+        <item> SHISHI </item>
+        <item> SHIYAN </item>
+        <item> SHOUGUANG </item>
+        <item> SHUANGYASHAN </item>
+        <item> SHUOZHOU </item>
+        <item> SHUYANG </item>
+        <item> SIMAO </item>
+        <item> SIPING </item>
+        <item> SONGYUAN </item>
+        <item> SUINING </item>
+        <item> SUIZHOU </item>
+        <item> SUZHOU </item>
+        <item> TACHENG </item>
+        <item> TAIAN </item>
+        <item> TAICANG </item>
+        <item> TAIXING </item>
+        <item> TAIYUAN </item>
+        <item> TAIZHOU </item>
+        <item> TAIZHOU1 </item>
+        <item> TANGSHAN </item>
+        <item> TENGCHONG </item>
+        <item> TENGZHOU </item>
+        <item> TIANMEN </item>
+        <item> TIANSHUI </item>
+        <item> TIELING </item>
+        <item> TONGCHUAN </item>
+        <item> TONGLIAO </item>
+        <item> TONGLING </item>
+        <item> TONGLU </item>
+        <item> TONGREN </item>
+        <item> TONGXIANG </item>
+        <item> TONGZHOU </item>
+        <item> TONGHUA </item>
+        <item> TULUFAN </item>
+        <item> WAFANGDIAN </item>
+        <item> WEIFANG </item>
+        <item> WEIHAI </item>
+        <item> WEINAN </item>
+        <item> WENDENG </item>
+        <item> WENLING </item>
+        <item> WENZHOU </item>
+        <item> WUHAI </item>
+        <item> WUHAN </item>
+        <item> WUHU </item>
+        <item> WUJIANG </item>
+        <item> WULANHAOTE </item>
+        <item> WUWEI </item>
+        <item> WUXI </item>
+        <item> WUZHOU </item>
+        <item> XIAN </item>
+        <item> XIANGCHENG </item>
+        <item> XIANGFAN </item>
+        <item> XIANGGELILA </item>
+        <item> XIANGSHAN </item>
+        <item> XIANGTAN </item>
+        <item> XIANGXIANG </item>
+        <item> XIANNING </item>
+        <item> XIANTAO </item>
+        <item> XIANYANG </item>
+        <item> XICANG </item>
+        <item> XICHANG </item>
+        <item> XINGTAI </item>
+        <item> XINGYI </item>
+        <item> XINING </item>
+        <item> XINXIANG </item>
+        <item> XINYANG </item>
+        <item> XINYU </item>
+        <item> XINZHOU </item>
+        <item> SUQIAN </item>
+        <item> SUYU </item>
+        <item> SUZHOU1 </item>
+        <item> XUANCHENG </item>
+        <item> XUCHANG </item>
+        <item> XUZHOU </item>
+        <item> YAAN </item>
+        <item> YAKESHI </item>
+        <item> YANAN </item>
+        <item> YANBIAN </item>
+        <item> YANCHENG </item>
+        <item> YANGJIANG </item>
+        <item> YANGQUAN </item>
+        <item> YANGZHOU </item>
+        <item> YANJI </item>
+        <item> YANTAI </item>
+        <item> YANZHOU </item>
+        <item> YIBIN </item>
+        <item> YICHANG </item>
+        <item> YICHUN </item>
+        <item> YICHUN1 </item>
+        <item> YILI </item>
+        <item> YINCHUAN </item>
+        <item> YINGKOU </item>
+        <item> YINGTAN </item>
+        <item> YINING </item>
+        <item> YIWU </item>
+        <item> YIXING </item>
+        <item> YIYANG </item>
+        <item> YONGKANG </item>
+        <item> YONGZHOU </item>
+        <item> YUEYANG </item>
+        <item> YUHUAN </item>
+        <item> YULIN1 </item>
+        <item> YULIN </item>
+        <item> YUNCHENG </item>
+        <item> YUXI </item>
+        <item> YUYAO </item>
+        <item> ZAOZHUANG </item>
+        <item> ZENGCHENG </item>
+        <item> CHANGCHUN </item>
+        <item> CHANGHAI </item>
+        <item> ZHANGJIAGANG </item>
+        <item> ZHANGJIAJIE </item>
+        <item> ZHANGJIAKOU </item>
+        <item> CHANGLE </item>
+        <item> ZHANGQIU </item>
+        <item> CHANGSHA </item>
+        <item> ZHANGYE </item>
+        <item> CHANGZHI </item>
+        <item> ZHANGZHOU </item>
+        <item> ZHANJIANG </item>
+        <item> ZHAODONG </item>
+        <item> ZHAOQING </item>
+        <item> ZHAOTONG </item>
+        <item> ZHENGZHOU </item>
+        <item> ZHENJIANG </item>
+        <item> ZHONGSHAN </item>
+        <item> ZHOUKOU </item>
+        <item> ZHOUSHAN </item>
+        <item> ZHUCHENG </item>
+        <item> ZHUHAI </item>
+        <item> ZHUJI </item>
+        <item> ZHUMADIAN </item>
+        <item> ZHUZHOU </item>
+        <item> ZIBO </item>
+        <item> ZIGONG </item>
+        <item> ZUNYI </item>
+        <item> WULUMUQI </item>
+        <item> FUQING </item>
+        <item> EZHOU </item>
+        <item> BAOTOU </item>
+        <item> XIAOSHAN </item>
+        <item> XUANHUA </item>
+        <item> JIANGYOU </item>
+        <item> ZIYANG </item>
+        <item> XINJI </item>
+        <item> FOSHAN </item>
+        <item> WANZHOU </item>
+        <item> ZOUCHENG </item>
+        <item> SHAOWU </item>
+        <item> JIANGYAN </item>
+        <item> XIANGYIN </item>
+        <item> SONGJIANG </item>
+        <item> QITAIHE </item>
+        <item> LILING </item>
+        <item> FULING </item>
+        <item> GONGZHULING </item>
+        <item> SHEXIAN </item>
+        <item> XINGHUA</item>
+
+    </string-array>
+
+</resources>
