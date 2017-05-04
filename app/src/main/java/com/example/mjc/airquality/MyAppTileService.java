@@ -73,7 +73,7 @@ public class MyAppTileService extends TileService {
                 saveDataToLocal(aqi);
             }
         });
-        String cityPinYin = new LocalSharedPreferences().readStringData(getApplicationContext(), "city");
+        String cityPinYin = new LocalSharedPreferences().readStringData(getApplicationContext(), "cityPY");
         gainAqiUtil.sendRequestWithHttpClient(cityPinYin);
     }
 
