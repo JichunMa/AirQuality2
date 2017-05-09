@@ -53,7 +53,7 @@ public class MyAppTileService extends TileService {
     @Override
     public void onStartListening() {
         super.onStartListening();
-        Log.d("mjc", "onStartListening");
+        Log.d("mjc1", "onStartListening");
 
         getDataFromWeb();
     }
