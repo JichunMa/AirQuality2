@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         currentAqi = getLastAQIData();//显示上一次数据的指数
         loadCityName();//从本地加载城市名称
         getDataFromWeb();
+
     }
+
 
     public void bindView() {
         txtAqi = (TextView) findViewById(R.id.txtAqi);
@@ -44,19 +46,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    //加载上次数据
     public int getLastAQIData() {
-        int aqi = -1;
+        int aqi;
         SharedPreferences settings = getSharedPreferences(getPackageName(), 0);
         aqi = settings.getInt("aqi", -1);
         return aqi;
     }
 
+    //展示PM2.5指数
     public void displayAQI(int aqi) {
-        if(aqi == -1){
+        if(aqi != -1){
             //展示默认文字
-        }else{
-            txtAqi.setText("");
-            txtAqi.setText("" + aqi);
+            txtAqi.setText(String.valueOf(aqi));
             if (aqi < 50) {
                 txtAqi.append("\n一级（优）");
                 txtContent.setText("空气质量令人满意，基本无空气污染");
@@ -124,36 +127,16 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
 
-    /**
-     * @date create time 2017/4/24
-     * @author mjc
-     * @Description 保存数据到本地
-     * @Param
-     * @Version v450
-     */
+
     public void saveAQIToLocal(int aqi) {
         new LocalSharedPreferences().saveIntegerData(getApplicationContext(), "aqi", aqi);
     }
 
-    /**
-     * @date create time 2017/4/24
-     * @author mjc
-     * @Description 保存城市名称到本地
-     * @Param cityNamePinYin城市名称拼音
-     * @Version v450
-     */
     public void saveCityNameToLocal(String city ,String cityNamePinYin) {
         new LocalSharedPreferences().saveStringData(getApplicationContext(), "city", city);
         new LocalSharedPreferences().saveStringData(getApplicationContext(), "cityPY", cityNamePinYin);
     }
 
-    /**
-     * @date create time 2017/4/24
-     * @author mjc
-     * @Description 从接口中获取数据
-     * @Param
-     * @Version v450
-     */
     public void getDataFromWeb() {
         //先显示默认文字
         displayAQI(-1);
