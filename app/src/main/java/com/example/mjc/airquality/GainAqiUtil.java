@@ -85,9 +85,9 @@ public class GainAqiUtil {
                             response.append(line);
                         }
 
-
-                        Log.d("mjctest", "cityPY: "+cityPY);
-                        Log.d("mjctest", response.toString());
+                        //接口
+                       /* Log.d("mjctest", "cityPY: "+cityPY);
+                        Log.d("mjctest", response.toString());*/
 
                         final int aqi = parseJsonData(response.toString());
                         if (aqi == -1) {
@@ -143,7 +143,6 @@ public class GainAqiUtil {
                     }
                     handler.sendMessage(msg);
                 }else{
-                    Log.d("ResponseData", data);
                     Log.d("ResponseData", data);
                     Message msg = new Message();
                     msg.obj = "获取数据失败!";
