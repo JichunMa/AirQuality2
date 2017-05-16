@@ -3,6 +3,8 @@ package com.esaysidebar.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -18,6 +20,7 @@ import com.esaysidebar.EasySideBarBuilder;
 import com.esaysidebar.R;
 import com.esaysidebar.bean.CitySortModel;
 import com.esaysidebar.lib.EasySideBar;
+import com.esaysidebar.utils.LocalCityNameUtil;
 import com.esaysidebar.utils.PinyinComparator;
 import com.esaysidebar.utils.PinyinUtils;
 
@@ -41,9 +44,25 @@ public class SortCityActivity extends Activity {
     private boolean isLazyRespond;//是否为懒加载
     private String[] indexItems;//头部的索引值
     private String LocationCity;//定位城市
+    private String LocationCityPinYin;//定位城市拼音
     private int indexColor;//索引文字颜色
     private int maxOffset;//滑动特效 最大偏移量
 
+    //方便一次读取
+    private String[] cityNames;
+    private String[] cityPY;
+
+
+    Handler handlerUI = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    mTvLoaction.setText(LocationCity);//设置定位城市
+                    break;
+            }
+        }
+    };
 
 
     @Override
@@ -77,12 +96,18 @@ public class SortCityActivity extends Activity {
         initSideBar();
         initEvents();
         setAdapter();
+        //当前显示定位中时重新获取一次定位城市
+        if (!TextUtils.isEmpty(LocationCity) && LocationCity.equals("定位中")) {
+            reGetLocalCityName();
+        }
     }
 
 
     private void setAdapter() {
 
-        SourceDateList = filledData(getResources().getStringArray(R.array.provinces),getResources().getStringArray(R.array.provinces_py));
+        cityNames = getResources().getStringArray(R.array.provinces);
+        cityPY = getResources().getStringArray(R.array.provinces_py);
+        SourceDateList = filledData();
         Collections.sort(SourceDateList, new PinyinComparator());
         adapter = new SortAdapter(this, SourceDateList);
         sortListView.setAdapter(adapter);
@@ -119,7 +144,7 @@ public class SortCityActivity extends Activity {
 
                 String city = ((CitySortModel) adapter.getItem(position - 2)).getName();
                 String cityPinYin = ((CitySortModel) adapter.getItem(position - 2)).getCityPY();
-                SentDataForResult(city,cityPinYin);
+                SentDataForResult(city, cityPinYin);
             }
         });
 
@@ -203,7 +228,7 @@ public class SortCityActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //选中的 Gird city
-                SentDataForResult(HotCityList.get(i),"");
+                SentDataForResult(HotCityList.get(i), "");
 
             }
         });
@@ -228,14 +253,14 @@ public class SortCityActivity extends Activity {
             mTvLoaction.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SentDataForResult(LocationCity,"");
+                    SentDataForResult(LocationCity, "");
                 }
             });
         }
         return headView;
     }
 
-    private void SentDataForResult(String city,String cityPY) {
+    private void SentDataForResult(String city, String cityPY) {
         Intent mIntent = new Intent();
         mIntent.putExtra("selected", city);
         mIntent.putExtra("cityNamePinYin", cityPY);
@@ -268,7 +293,7 @@ public class SortCityActivity extends Activity {
         adapter.updateListView(mSortList);
     }
 
-    private List<CitySortModel> filledData(String[] cityNames,String[] cityPY) {//获取数据，并根据拼音分类,添加index
+    private List<CitySortModel> filledData() {//获取数据，并根据拼音分类,添加index
         List<CitySortModel> mSortList = new ArrayList<>();
         ArrayList<String> indexString = new ArrayList<>();//索引字母数组
         boolean isGarbled = false;
@@ -311,5 +336,39 @@ public class SortCityActivity extends Activity {
         return mIndexItems;
     }
 
+
+    //重新获取城市名称
+    public void reGetLocalCityName() {
+        //获取定位城市
+        LocalCityNameUtil cityNameUtil = new LocalCityNameUtil(new LocalCityNameUtil.GetLocalCityNameCallback() {
+            @Override
+            public void setLocalCityName(String cityName) {
+                LocationCity = cityName;
+                LocationCityPinYin = getLocalCityNamePinYin();//获取定位城市拼音
+                handlerUI.sendEmptyMessage(1);
+            }
+        });
+        cityNameUtil.getLocalCityName(this);
+    }
+
+    //获取定位城市名称的拼音
+    public String getLocalCityNamePinYin() {
+        //获取定位城市
+        String localCityPinYin = "";
+        int index = -1;
+        if (!TextUtils.isEmpty(LocationCity)) {
+            for (int i = 0; i < cityNames.length; i++) {
+                //排除市地区等字样干扰
+                if (LocationCity.indexOf(cityNames[i]) > -1) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index != -1) {
+                localCityPinYin = cityPY[index];
+            }
+        }
+        return localCityPinYin;
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.mjc.airquality;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -9,10 +10,19 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.esaysidebar.EasySideBarBuilder;
+import com.example.mjc.airquality.util.LocalCityNameUtil;
 import com.example.mjc.airquality.util.LocalSharedPreferences;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
+
+
+public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
 
     private TextView txtAqi;
     private TextView txtContent;
@@ -20,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     int currentAqi = -1;
     private final String[] mIndexItems = {"定位"};//头部额外的索引
     String cityNamePinYin = "beijing";//当前选中城市的拼音
+    String localCityName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         currentAqi = getLastAQIData();//显示上一次数据的指数
         loadCityName();//从本地加载城市名称
         getDataFromWeb();
+
+        //获取定位城市
+        getLocalCityName();
 
     }
 
@@ -46,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     //加载上次数据
     public int getLastAQIData() {
         int aqi;
@@ -57,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     //展示PM2.5指数
     public void displayAQI(int aqi) {
-        if(aqi != -1){
+        if (aqi != -1) {
             //展示默认文字
             txtAqi.setText(String.valueOf(aqi));
             if (aqi < 50) {
@@ -97,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                     cityNamePinYin = data.getStringExtra("cityNamePinYin");
                     if (!TextUtils.isEmpty(city) && !TextUtils.isEmpty(cityNamePinYin)) {
                         txtCity.setText(city);
-                        saveCityNameToLocal(city,cityNamePinYin);
+                        saveCityNameToLocal(city, cityNamePinYin);
                         Toast.makeText(this, "选择的城市：" + city + ",拼音为：" + cityNamePinYin,
                                 Toast.LENGTH_SHORT).show();
                         getDataFromWeb();
@@ -115,6 +129,10 @@ public class MainActivity extends AppCompatActivity {
     //选择城市
     public void chooseCity() {
         //初始化以及配置
+        if(TextUtils.isEmpty(localCityName)){
+            //未定位成功显示定位中，定位成功显示定位城市名称
+            localCityName = "定位中";
+        }
         new EasySideBarBuilder(MainActivity.this)
                 .setTitle("城市选择")
                 .setIndexColor(Color.BLUE)
@@ -122,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 .isLazyRespond(true) //懒加载模式
                 //.setHotCityList(hotCityList)//热门城市列表
                 .setIndexItems(mIndexItems)//索引字母
-                .setLocationCity("北京")//定位城市
+                .setLocationCity(localCityName)//定位城市
                 .setMaxOffset(60)//索引的最大偏移量
                 .start();
     }
@@ -132,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         new LocalSharedPreferences().saveIntegerData(getApplicationContext(), "aqi", aqi);
     }
 
-    public void saveCityNameToLocal(String city ,String cityNamePinYin) {
+    public void saveCityNameToLocal(String city, String cityNamePinYin) {
         new LocalSharedPreferences().saveStringData(getApplicationContext(), "city", city);
         new LocalSharedPreferences().saveStringData(getApplicationContext(), "cityPY", cityNamePinYin);
     }
@@ -150,13 +168,46 @@ public class MainActivity extends AppCompatActivity {
         });
         gainAqiUtil.sendRequestWithHttpClient(cityNamePinYin);
     }
+
     //从本地加载城市名称
-    public void loadCityName(){
-        String cityName = new LocalSharedPreferences().readStringData(this,"city");
-        String cityNamePinYinLocal = new LocalSharedPreferences().readStringData(this,"cityPY");
-        if(!TextUtils.isEmpty(cityName)&&!TextUtils.isEmpty(cityNamePinYinLocal)){
+    public void loadCityName() {
+        String cityName = new LocalSharedPreferences().readStringData(this, "city");
+        String cityNamePinYinLocal = new LocalSharedPreferences().readStringData(this, "cityPY");
+        if (!TextUtils.isEmpty(cityName) && !TextUtils.isEmpty(cityNamePinYinLocal)) {
             txtCity.setText(cityName);
             cityNamePinYin = cityNamePinYinLocal;
         }
     }
+
+    //定位获取城市名称
+    @AfterPermissionGranted(65)
+    public void getLocalCityName() {
+        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            //具有相关权限
+            LocalCityNameUtil cityNameUtil  = new LocalCityNameUtil(new LocalCityNameUtil.GetLocalCityNameCallback() {
+                @Override
+                public void setLocalCityName(String cityName) {
+                    localCityName = cityName;
+                }
+            });
+            cityNameUtil.getLocalCityName(MainActivity.this);
+        }else{
+            //未拥有权限，去申请权限
+            EasyPermissions.requestPermissions(this, "", 65, perms);
+        }
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+        Toast.makeText(this, "授予权限成功", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            new AppSettingsDialog.Builder(this).build().show();
+        }
+    }
+
 }
