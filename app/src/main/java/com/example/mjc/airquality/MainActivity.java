@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         //获取定位城市
         getLocalCityName();
 
+
+        Log.d("zero","test log");
     }
 
 
@@ -194,20 +198,32 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
             cityNameUtil.getLocalCityName(MainActivity.this);
         }else{
             //未拥有权限，去申请权限
-            EasyPermissions.requestPermissions(this, "", 65, perms);
+            Log.d("zero","需要申请权限");
+            EasyPermissions.requestPermissions(this, "定位功能需要您允许定位权限", 65, perms);
         }
     }
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         Toast.makeText(this, "授予权限成功", Toast.LENGTH_SHORT).show();
+        Log.d("zero","授予权限成功");
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
+        Log.d("zero","onPermissionsDenied");
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            new AppSettingsDialog.Builder(this).build().show();
+            if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+                new AppSettingsDialog.Builder(this).build().show();
+            }
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+
+    }
 }

@@ -1,13 +1,16 @@
 package com.esaysidebar.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -15,6 +18,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.esaysidebar.EasySideBarBuilder;
 import com.esaysidebar.R;
@@ -28,7 +32,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SortCityActivity extends Activity {
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
+
+public class SortCityActivity extends Activity implements EasyPermissions.PermissionCallbacks {
     private ListView sortListView;
     private EasySideBar sideBar;
     private TextView mTvTitle;
@@ -338,17 +346,26 @@ public class SortCityActivity extends Activity {
 
 
     //重新获取城市名称
+    @AfterPermissionGranted(65)
     public void reGetLocalCityName() {
         //获取定位城市
-        LocalCityNameUtil cityNameUtil = new LocalCityNameUtil(new LocalCityNameUtil.GetLocalCityNameCallback() {
-            @Override
-            public void setLocalCityName(String cityName) {
-                LocationCity = cityName;
-                LocationCityPinYin = getLocalCityNamePinYin();//获取定位城市拼音
-                handlerUI.sendEmptyMessage(1);
-            }
-        });
-        cityNameUtil.getLocalCityName(this);
+        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+        if (EasyPermissions.hasPermissions(this, perms)) {
+            //具有相关权限
+            LocalCityNameUtil cityNameUtil = new LocalCityNameUtil(new LocalCityNameUtil.GetLocalCityNameCallback() {
+                @Override
+                public void setLocalCityName(String cityName) {
+                    LocationCity = cityName;
+                    LocationCityPinYin = getLocalCityNamePinYin();//获取定位城市拼音
+                    handlerUI.sendEmptyMessage(1);
+                }
+            });
+            cityNameUtil.getLocalCityName(this);
+        } else {
+            //未拥有权限，去申请权限
+            Log.d("mjc", "需要申请权限");
+            EasyPermissions.requestPermissions(this, "定位功能需要您允许定位权限", 65, perms);
+        }
     }
 
     //获取定位城市名称的拼音
@@ -371,4 +388,26 @@ public class SortCityActivity extends Activity {
         return localCityPinYin;
     }
 
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+        Toast.makeText(this, "授予权限成功", Toast.LENGTH_SHORT).show();
+        Log.d("zero", "授予权限成功");
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+        Log.d("zero", "onPermissionsDenied");
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
+            Log.d("zero", "somePermissionPermanentlyDenied");
+            new AppSettingsDialog.Builder(this).build().show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
 }
