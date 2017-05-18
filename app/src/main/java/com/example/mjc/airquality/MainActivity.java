@@ -27,6 +27,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
 
     private TextView txtAqi;
+    private TextView txtAqiNum;
     private TextView txtContent;
     private TextView txtCity;
     int currentAqi = -1;
@@ -42,16 +43,13 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
         currentAqi = getLastAQIData();//显示上一次数据的指数
         loadCityName();//从本地加载城市名称
         getDataFromWeb();
-
         //获取定位城市
         getLocalCityName();
-
-
-        Log.d("zero","test log");
     }
 
 
     public void bindView() {
+        txtAqiNum = (TextView) findViewById(R.id.txtAqiNum);
         txtAqi = (TextView) findViewById(R.id.txtAqi);
         txtContent = (TextView) findViewById(R.id.txtContent);
         txtCity = (TextView) findViewById(R.id.txtCity);
@@ -77,31 +75,31 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     public void displayAQI(int aqi) {
         if (aqi != -1) {
             //展示默认文字
-            txtAqi.setText(String.valueOf(aqi));
+            txtAqiNum.setText(String.valueOf(aqi));
             if (aqi < 50) {
-                txtAqi.append("\n一级（优）");
-                txtContent.setText("空气质量令人满意，基本无空气污染");
-                txtAqi.setBackgroundColor(Color.parseColor("#009966"));
+                txtAqi.setText("优");
+                txtContent.setText(getResources().getString(R.string.aqi_content_1));
+                txtAqiNum.setBackgroundResource(R.drawable.aqi_bg_circle);
             } else if (aqi < 100) {
-                txtAqi.append("\n二级（良）");
-                txtContent.setText("空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响");
-                txtAqi.setBackgroundColor(Color.parseColor("#FFDE33"));
+                txtAqi.setText("良");
+                txtContent.setText(getResources().getString(R.string.aqi_content_2));
+                txtAqiNum.setBackgroundResource(R.drawable.aqi_bg_circle_2);
             } else if (aqi < 150) {
-                txtAqi.append("\n三级（轻度污染）");
-                txtContent.setText("易感人群症状有轻度加剧，健康人群出现刺激症状");
-                txtAqi.setBackgroundColor(Color.parseColor("#FF9933"));
+                txtAqi.setText("轻度污染");
+                txtContent.setText(getResources().getString(R.string.aqi_content_3));
+                txtAqiNum.setBackgroundResource(R.drawable.aqi_bg_circle_3);
             } else if (aqi < 200) {
-                txtAqi.append("\n四级（中度污染");
-                txtContent.setText("进一步加剧易感人群症状，可能对健康人群心脏、呼吸系统有影响");
-                txtAqi.setBackgroundColor(Color.parseColor("#CC0033"));
+                txtAqi.setText("中度污染");
+                txtContent.setText(getResources().getString(R.string.aqi_content_4));
+                txtAqiNum.setBackgroundResource(R.drawable.aqi_bg_circle_3);
             } else if (aqi < 300) {
-                txtAqi.append("\n五级（重度污染）");
-                txtContent.setText("心脏病和肺病患者症状显著加剧，运动耐受力降低，健康人群普遍出现症状");
-                txtAqi.setBackgroundColor(Color.parseColor("#660099"));
+                txtAqi.setText("重度污染");
+                txtContent.setText(getResources().getString(R.string.aqi_content_5));
+                txtAqiNum.setBackgroundResource(R.drawable.aqi_bg_circle_4);
             } else {
-                txtAqi.append("\n六级（严重污染）");
-                txtContent.setText("健康人群运动耐受力降低，有明显强烈症状，提前出现某些疾病");
-                txtAqi.setBackgroundColor(Color.parseColor("#7E0023"));
+                txtAqi.setText("严重污染");
+                txtContent.setText(getResources().getString(R.string.aqi_content_6));
+                txtAqiNum.setBackgroundResource(R.drawable.aqi_bg_circle_4);
             }
         }
     }

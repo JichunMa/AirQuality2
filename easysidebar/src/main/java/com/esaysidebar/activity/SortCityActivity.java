@@ -1,12 +1,10 @@
 package com.esaysidebar.activity;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -18,13 +16,11 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.esaysidebar.EasySideBarBuilder;
 import com.esaysidebar.R;
 import com.esaysidebar.bean.CitySortModel;
 import com.esaysidebar.lib.EasySideBar;
-import com.esaysidebar.utils.LocalCityNameUtil;
 import com.esaysidebar.utils.PinyinComparator;
 import com.esaysidebar.utils.PinyinUtils;
 
@@ -32,11 +28,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import pub.devrel.easypermissions.AfterPermissionGranted;
-import pub.devrel.easypermissions.AppSettingsDialog;
-import pub.devrel.easypermissions.EasyPermissions;
 
-public class SortCityActivity extends Activity implements EasyPermissions.PermissionCallbacks {
+public class SortCityActivity extends Activity {
     private ListView sortListView;
     private EasySideBar sideBar;
     private TextView mTvTitle;
@@ -59,6 +52,8 @@ public class SortCityActivity extends Activity implements EasyPermissions.Permis
     //方便一次读取
     private String[] cityNames;
     private String[] cityPY;
+
+    private String localCityPinYin = "";//定位城市拼音
 
 
     Handler handlerUI = new Handler() {
@@ -105,8 +100,8 @@ public class SortCityActivity extends Activity implements EasyPermissions.Permis
         initEvents();
         setAdapter();
         //当前显示定位中时重新获取一次定位城市
-        if (!TextUtils.isEmpty(LocationCity) && LocationCity.equals("定位中")) {
-            reGetLocalCityName();
+        if (!TextUtils.isEmpty(LocationCity) && !LocationCity.equals("定位失败")) {
+            localCityPinYin = getLocalCityNamePinYin();
         }
     }
 
@@ -133,26 +128,26 @@ public class SortCityActivity extends Activity implements EasyPermissions.Permis
                 if (position != -1) {
                     sortListView.setSelection(position + sortListView.getHeaderViewsCount());
                 } else {//未匹配到索引内容
-
                     for (int i = 0; i < indexItems.length; i++) {//匹配头部索引
                         if (value.equals(indexItems[i])) {
                             sortListView.setSelection(i);
                         }
                     }
-
                 }
             }
         });
 
         //ListView的点击事件
         sortListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                String city = ((CitySortModel) adapter.getItem(position - 2)).getName();
-                String cityPinYin = ((CitySortModel) adapter.getItem(position - 2)).getCityPY();
-                SentDataForResult(city, cityPinYin);
+                if (position >= 2) {
+                    String city = ((CitySortModel) adapter.getItem(position - 2)).getName();
+                    String cityPinYin = ((CitySortModel) adapter.getItem(position - 2)).getCityPY();
+                    SentDataForResult(city, cityPinYin);
+                } else {
+                    Log.d("zero", "点击空白位置");
+                }
             }
         });
 
@@ -229,6 +224,15 @@ public class SortCityActivity extends Activity implements EasyPermissions.Permis
             });
         }*/
 
+        mTvLoaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //成功获取定位拼音时才可选中
+                if (!TextUtils.isEmpty(localCityPinYin)){
+                    SentDataForResult(LocationCity, localCityPinYin);
+                }
+            }
+        });
 
         cityAdapter = new GridCityAdapter(this, R.layout.gridview_item, HotCityList);
         mGvCity.setAdapter(cityAdapter);
@@ -345,29 +349,6 @@ public class SortCityActivity extends Activity implements EasyPermissions.Permis
     }
 
 
-    //重新获取城市名称
-    @AfterPermissionGranted(65)
-    public void reGetLocalCityName() {
-        //获取定位城市
-        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
-        if (EasyPermissions.hasPermissions(this, perms)) {
-            //具有相关权限
-            LocalCityNameUtil cityNameUtil = new LocalCityNameUtil(new LocalCityNameUtil.GetLocalCityNameCallback() {
-                @Override
-                public void setLocalCityName(String cityName) {
-                    LocationCity = cityName;
-                    LocationCityPinYin = getLocalCityNamePinYin();//获取定位城市拼音
-                    handlerUI.sendEmptyMessage(1);
-                }
-            });
-            cityNameUtil.getLocalCityName(this);
-        } else {
-            //未拥有权限，去申请权限
-            Log.d("mjc", "需要申请权限");
-            EasyPermissions.requestPermissions(this, "定位功能需要您允许定位权限", 65, perms);
-        }
-    }
-
     //获取定位城市名称的拼音
     public String getLocalCityNamePinYin() {
         //获取定位城市
@@ -388,26 +369,10 @@ public class SortCityActivity extends Activity implements EasyPermissions.Permis
         return localCityPinYin;
     }
 
+    //点击返回键，关闭页面
     @Override
-    public void onPermissionsGranted(int requestCode, List<String> perms) {
-        Toast.makeText(this, "授予权限成功", Toast.LENGTH_SHORT).show();
-        Log.d("zero", "授予权限成功");
-    }
-
-    @Override
-    public void onPermissionsDenied(int requestCode, List<String> perms) {
-        Log.d("zero", "onPermissionsDenied");
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            Log.d("zero", "somePermissionPermanentlyDenied");
-            new AppSettingsDialog.Builder(this).build().show();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        // Forward results to EasyPermissions
-        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 }
