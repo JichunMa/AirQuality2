@@ -1,14 +1,11 @@
-# idea
-out/
-gen/
-.idea/
 *.iml
-*.ipr
-*.iws
-
-# gradlegit
-.gradle/
-build/
-
-# android tool
-local.propertiesclear
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.idea/
+gradle/
