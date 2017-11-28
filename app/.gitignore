@@ -1,1 +1,14 @@
-/build
+# idea
+out/
+gen/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# gradlegit
+.gradle/
+build/
+
+# android tool
+local.propertiesclear

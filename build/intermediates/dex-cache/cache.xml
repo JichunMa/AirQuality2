@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/majichun/AndroidStudioProjects/AirQuality2/easysidebar/build/intermediates/bundles/default/libs/pinyin4j-2.5.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9e05ca43c4c2716db3e5d2dd7ef14d2a6d370e29">
+        <dex dex="/Users/majichun/AndroidStudioProjects/AirQuality2/app/build/intermediates/transforms/dex/debug/folders/1000/8/pinyin4j-2.5.0_03e5ad8340316290de992b226c07a6b0d834ec98/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/majichun/AndroidStudioProjects/AirQuality2/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2f7344eee5441aaf4ed38f116733612aa41e4f76">
+        <dex dex="/Users/majichun/AndroidStudioProjects/AirQuality2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c9a18d591942d9c2b155e7f2cde5e26c087b9d37/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/majichun/.android/build-cache/8f6a78fb282eedd9d52a9f8765a563b3b19b3293/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="870ce856ec2f776985b61dbbf0df0db9fe6df78b">
+        <dex dex="/Users/majichun/AndroidStudioProjects/AirQuality2/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_42282ca9c70392ca30fe2084a95e2d87e35347ae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/majichun/AndroidStudioProjects/AirQuality2/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/majichun/AndroidStudioProjects/AirQuality2/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_fb280a8414608cb7ac42d5331b812567efd67482/classes.dex" />
+    </item>
+
+</items>
